@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %} Search {% endblock %} 
+
+{% block body %}
+    <div class = "input-group mb-3">
+        <input id = "searchbar" type="text" class = "form-control" name = "search" placeholder="Search database">
+    </div>
+
+    <ul id = "results" class = "list-group">
+    </ul>
+
+    <script>
+        $(document).ready(function(){
+            $("#searchbar").on("keyup", function(e){
+                $.ajax({
+                    data : {
+                        string : $("#searchbar").val()
+                    },
+                    type : 'POST',
+                    url : '/search'
+                }).done(function(data){
+                    $("ul").empty()
+                    $.each(data.results, function(key, value){
+                        result = JSON.parse(value)
+
+                        if (result.type == "book"){
+                            //alert("inside!");
+                            $("ul").append("<li class ='list-group-item'><a href = '/bookdetails?url=" + result.url + "'>" + result.name + "</a></li>");
+                        }
+                        else if (result.type == "character"){
+                            $("ul").append("<li class ='list-group-item'><a href = '/characterdetails?url=" + result.url + "'>" + result.name + "</a></li>");
+                        }
+                        else if (result.type == "house"){
+                            $("ul").append("<li class ='list-group-item'><a href = '/housedetails?url=" + result.url + "'>" + result.name + "</a></li>");
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

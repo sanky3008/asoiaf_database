@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %} Character List {% endblock %} 
+
+{% block body %}
+    <table class = "table">
+        <th>
+            Name
+        </th>
+        {% for character in characters %}
+            <tr>
+                <td>
+                    <a href = "{{ '/characterdetails?url=%s'%character['url'] }}">{{ character["name"] }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %} House List {% endblock %} 
+
+{% block body %}
+    <table class = "table">
+        <th>
+            Name
+        </th>
+        {% for house in houses %}
+            <tr>
+                <td>
+                    <a href = "{{ '/housedetails?url=%s'%house['url'] }}">{{ house["name"] }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

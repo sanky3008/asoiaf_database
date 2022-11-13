@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %} Book List {% endblock %} 
+
+{% block body %}
+    <table class = "table">
+        <th>
+            Name
+        </th>
+        {% for book in books %}
+            <tr>
+                <td>
+                    <a href = "{{ '/bookdetails?url=%s'%book['url'] }}">{{ book["name"] }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

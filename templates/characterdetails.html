@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %} Character Details {% endblock %} 
+{% set chardetails = details[0] %}
+{% set aliases = details[1] %}
+{% set tvSeries = details[2] %}
+
+{% block body %}
+    <table class = "table"> 
+        <tr>
+            <td>Name</td><td>{{chardetails["name"]}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td><td>{{chardetails["gender"]}}</td>
+        </tr>
+        <tr>
+            <td>Aliases</td>
+            <td>
+                {% for alias in aliases %}
+                    {{alias}}<br>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td valign = top>TV<br>Series</td>
+            <td>
+                {% for tvshow in tvSeries %}
+                    {{tvshow}}<br>
+                {% endfor %}
+            </td>
+        </tr> 
+    </table>
+{% endblock %}

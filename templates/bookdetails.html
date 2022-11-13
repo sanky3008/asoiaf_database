@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %} Book Details {% endblock %} 
+{% set bookdetails = details[0] %}
+{% set authors = details[1] %}
+
+{% block body %}
+    <table class = "table"> 
+        <tr>
+            <td>Name</td><td>{{bookdetails["name"]}}</td>
+        </tr>
+        <tr>
+            <td>ISBN</td><td>{{bookdetails["isbn"]}}</td>
+        </tr>
+        <tr>
+            <td valign = "top">authors</td>
+            <td>
+                {% for author in authors %}
+                    {{author}}<br>
+                {% endfor %}
+            </td>
+        </tr> 
+        <tr>
+            <td>Pages</td><td>{{bookdetails["numberOfPages"]}}</td>
+        </tr>           
+        <tr>
+            <td>publisher</td><td>{{bookdetails["publisher"]}}</td>
+        </tr>
+        <tr>
+            <td>country</td><td>{{bookdetails["country"]}}</td>
+        </tr>
+        <tr>
+            <td>released</td><td>{{bookdetails["released"]}}</td>
+        </tr>
+    </table>
+{% endblock %}

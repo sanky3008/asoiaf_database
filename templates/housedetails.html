@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %} House Details {% endblock %} 
+{% set housedetails = details[0] %}
+{% set titles = details[1] %}
+{% set seats = details[2] %}
+
+{% block body %}
+    <table class = "table"> 
+        <tr>
+            <td>Name</td><td>{{housedetails["name"]}}</td>
+        </tr>
+        <tr>
+            <td>Region</td><td>{{housedetails["region"]}}</td>
+        </tr>
+        <tr>
+            <td>Coat Of Arms</td><td>{{housedetails["coatOfArms"]}}</td>
+        </tr>
+        <tr>
+            <td>Words</td><td>{{housedetails["words"]}}</td>
+        </tr>
+        <tr>
+            <td valign = "top">Titles</td>
+            <td>
+                {% for title in titles %}
+                    {{title}}<br>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td valign = "top">Seats</td>
+            <td>
+                {% for seat in seats %}
+                    {{seat}}<br>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+{% endblock %}
